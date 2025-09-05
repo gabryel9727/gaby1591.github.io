@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaby_1591 - Hacker Vibes</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    header, section, footer {
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: flicker 3s infinite alternate;
+    }
+
+    p, li {
+      margin: 0.5rem 0;
+      animation: typing 3s steps(40, end) forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card {
+      border: 1px solid #00ff00;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 700px;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 15px #00ff00;
+      animation: glow 2s infinite alternate;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    /* Animations */
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.8; text-shadow: 0 0 10px #0f0; }
+      100% { opacity: 1; text-shadow: 0 0 20px #0f0; }
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 5px #0f0; }
+      to { box-shadow: 0 0 20px #0f0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Matrix rain effect */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <header>
+    <h1>Gaby_1591</h1>
+    <p>I am autistic and cool :)</p>
+    <p>Discord: autista foda</p>
+    <p>Gmail: gabryeljsc@gmail.com</p>
+    <p>Roblox: gaby_1591</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>WhatsApp Project</h2>
+      <p>Created a custom WhatsApp Web spammer GUI with:</p>
+      <ul style="list-style:none;">
+        <li>Random emoji/letter spam</li>
+        <li>Speed slider</li>
+        <li>Stop button</li>
+        <li>Dino game inside GUI</li>
+        <li>Background upload</li>
+        <li>Super ninja mode</li>
+        <li>40+ crazy UI features</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>About my style</h2>
+      <p>I love chaotic projects and mix serious coding with insane troll ideas 💀</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made with 💚 by Gaby_1591 | Hacker vibes</p>
+  </footer>
+
+  <script>
+    // Matrix rain effect
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01010101001010100010101";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for(let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for(let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
